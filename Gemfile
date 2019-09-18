@@ -65,6 +65,10 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-rails'
+  gem 'rubocop', '~> 0.74.0', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-performance', require: false
   gem 'timecop'
   gem 'bullet'
 end
@@ -83,5 +87,4 @@ group :production do
 end
 
 gem 'newrelic_rpm'
-gem 'rubocop', '~> 0.74.0'
 gem 'rollbar'
