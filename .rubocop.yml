@@ -1,17 +1,34 @@
+inherit_from: .rubocop_todo.yml
+
+# inherit_from: .rubocop_todo.yml
+
 # Find out more about the rubocop cops  https://github.com/bbatsov/rubocop/blob/master/config/enabled.yml
+require:
+  # - rubocop-performance
+  # - rubocop-rails
+  # - rubocop-rspec
 
 AllCops:
   Exclude:
-    - db/**/*
-    - spec/**/*
-    - config/**/*
+    - db/schema.rb
+    - db/migrate/**
+    - config/*
+    - config/initializers/*
     - bin/**/*
 
 Metrics/LineLength:
-  Max: 120
+  Max: 190
 
 Layout/EndOfLine:
   EnforcedStyle: lf
+
+# Check that the first argument to the top level describe is
+# the tested class or module.
+#   - excluding rake task tests
+#
+# RSpec/DescribeClass:
+#   Exclude:
+#     - 'spec/lib/tasks/*'
 
 Style/Documentation:
   Enabled: false
@@ -21,10 +38,3 @@ Style/FrozenStringLiteralComment:
 
 Style/ClassAndModuleChildren:
   Enabled: false
-
-Rails:
-  Enabled: true
-
-Rails/Date:
-  Enabled: true
-
