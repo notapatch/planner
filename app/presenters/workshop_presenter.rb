@@ -25,8 +25,12 @@ class WorkshopPresenter < EventPresenter
     content_tag(:ul, list)
   end
 
-  def attendees_csv
-    CSV.generate { |csv| attendee_array.each { |a| csv << a } }
+  def attendees_csv(headers: true)
+    attributes = %w{full_name role about_you first_time}
+    @attendees_csv ||= CSV.generate(headers: true) do |csv|
+      csv << attributes if headers
+      attendee_array.each { |a| csv << a }
+    end
   end
 
   def attendees_checklist
@@ -70,20 +74,18 @@ class WorkshopPresenter < EventPresenter
     end.join("\n\n")
   end
 
-  def attending_organisers
-    organisers.map do |o|
-      [o.full_name, 'ORGANISER']
+  def attendee_array
+    attendees = WorkshopOrganiserInvitationPresenter.decorate_collection(organisers)
+                                                    .sort_by(&:full_name)
+    attendees += WorkshopInvitationPresenter.decorate_collection(non_organisers)
+                                            .sort_by{ |i| [i.role, i.full_name]}
+    attendees.map do |item|
+      [item.full_name, item.role, item.note, item.about_you, item.newbie?]
     end
   end
 
-  def attendee_array
-    model.attendances.map do |i|
-      if organisers.include?(i.member)
-        [i.member.full_name, 'ORGANISER']
-      else
-        [i.member.full_name, i.role.upcase]
-      end
-    end.concat(attending_organisers).uniq
+  def non_organisers
+    model.attendances.select { |invite| organisers.exclude?(invite.member) }
   end
 
   def member_info(member, pos)
