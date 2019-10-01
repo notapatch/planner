@@ -7,7 +7,7 @@
           %label.label.success Attending
       %h3
         %small #{l(@event.date_and_time)} to #{l(@event.ends_at, format: :time) }
-        %p.lead= @event.description.html_safe
+        %p.lead= @event.description
 
   .row
     .large-10.columns

@@ -5,7 +5,7 @@ class EventInvitationMailer < ActionMailer::Base
   helper ApplicationHelper
 
   def invite_student(event, member, invitation)
-    @event = event
+    @event = EventPresenter.new(event)
     @member = member
     @invitation = invitation
     @host_address = AddressPresenter.new(@event.venue.address)
@@ -16,7 +16,7 @@ class EventInvitationMailer < ActionMailer::Base
   end
 
   def invite_coach(event, member, invitation)
-    @event = event
+    @event = EventPresenter.new(event)
     @member = member
     @invitation = invitation
     @host_address = AddressPresenter.new(@event.venue.address)

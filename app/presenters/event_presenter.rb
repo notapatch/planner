@@ -25,7 +25,7 @@ class EventPresenter < BasePresenter
   end
 
   def description
-    model.description rescue nil
+    h.sanitize(model.description) rescue nil
   end
 
   def short_description

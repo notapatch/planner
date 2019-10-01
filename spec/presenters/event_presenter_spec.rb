@@ -16,8 +16,14 @@ RSpec.describe EventPresenter do
     event.sponsors
   end
 
-  it '#description' do
-    expect(event.description).to be(workshop.description)
+  context '#description' do
+    it 'returns string' do
+      expect(event.description).to eq(workshop.description)
+    end
+
+    it_behaves_like "Sanitized HTML", "description", "<br>", "alert('owned');" do
+      let(:model) { EventPresenter.new(Fabricate(:workshop, description: "<script>alert('owned');</script><br>")) }
+    end
   end
 
   it '#organisers' do
