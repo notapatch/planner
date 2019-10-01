@@ -10,4 +10,9 @@ RSpec.describe SponsorPresenter do
       expect(sponsor_presenter.contact_full_name).to eq('Leonardo Da Vinci')
     end
   end
+
+  it_behaves_like "Sanitized HTML", "contact_info", "<br>", "alert" do
+    let(:sponsor) { Fabricate(:sponsor, email: '<script>alert</script><br>') }
+    let(:model) { SponsorPresenter.new(sponsor) }
+  end
 end

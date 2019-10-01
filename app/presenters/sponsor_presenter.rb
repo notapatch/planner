@@ -2,7 +2,8 @@ class SponsorPresenter < BasePresenter
   include Rails.application.routes.url_helpers
 
   def contact_info
-    [member_contact_details, contact_full_name, model.email].flatten.compact.delete_if(&:empty?).join('<br/>').html_safe
+    info = [member_contact_details, contact_full_name, model.email].flatten.compact.delete_if(&:empty?).join('<br/>')
+    h.sanitize(info)
   end
 
   def member_contact_details
