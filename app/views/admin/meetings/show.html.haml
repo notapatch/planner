@@ -54,7 +54,7 @@
       .large-8.columns
         %h4 Agenda
         %br
-        = @meeting.description.html_safe
+        = @meeting.description
 
 #invitations.stripe.reverse
   = render partial: 'invitation_management'

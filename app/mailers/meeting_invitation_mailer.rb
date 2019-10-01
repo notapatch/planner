@@ -6,7 +6,7 @@ class MeetingInvitationMailer < ActionMailer::Base
 
   def invite(meeting, member)
     @member = member
-    @meeting = meeting
+    @meeting = MeetingPresenter.new(meeting)
     @host_address = AddressPresenter.new(@meeting.venue.address)
     @rsvp_url = meeting_url(@meeting)
 
@@ -16,7 +16,7 @@ class MeetingInvitationMailer < ActionMailer::Base
 
   def attending(meeting, member)
     @member = member
-    @meeting = meeting
+    @meeting = MeetingPresenter.new(meeting)
     @host_address = AddressPresenter.new(@meeting.venue.address)
     @cancellation_url = meeting_url(@meeting)
 
@@ -26,7 +26,7 @@ class MeetingInvitationMailer < ActionMailer::Base
 
   def approve_from_waitlist(meeting, member)
     @member = member
-    @meeting = meeting
+    @meeting = MeetingPresenter.new(meeting)
     @host_address = AddressPresenter.new(@meeting.venue.address)
     @cancellation_url = meeting_url(@meeting)
 
@@ -36,7 +36,7 @@ class MeetingInvitationMailer < ActionMailer::Base
 
   def attendance_reminder(meeting, member)
     @member = member
-    @meeting = meeting
+    @meeting = MeetingPresenter.new(meeting)
     @host_address = AddressPresenter.new(@meeting.venue.address)
     @cancellation_url = meeting_url(@meeting)
 

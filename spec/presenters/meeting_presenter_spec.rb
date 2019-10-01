@@ -12,6 +12,16 @@ RSpec.describe MeetingPresenter do
     expect(event.description).to eq(meeting.description)
   end
 
+  context '#description' do
+    it 'returns string' do
+      expect(event.description).to eq(meeting.description)
+    end
+
+    it_behaves_like "Sanitized HTML", "description", "<br>", "alert" do
+      let(:model) { MeetingPresenter.new(Fabricate(:meeting, description: '<script>alert</script><br>')) }
+    end
+  end
+
   it '#venue' do
     expect(event.venue).to eq(meeting.venue)
   end

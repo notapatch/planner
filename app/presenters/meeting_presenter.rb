@@ -4,7 +4,7 @@ class MeetingPresenter < EventPresenter
   end
 
   def description
-    model.description
+    h.sanitize model.description
   end
 
   def organisers
