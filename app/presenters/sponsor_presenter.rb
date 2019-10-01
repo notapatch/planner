@@ -16,10 +16,4 @@ class SponsorPresenter < BasePresenter
 
     "#{model.contact_first_name.camelize} #{model.contact_surname.camelize}"
   end
-
-  private
-
-  def h
-    ActionController::Base.helpers
-  end
 end

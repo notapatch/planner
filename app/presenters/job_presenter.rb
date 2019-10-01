@@ -8,7 +8,7 @@ class JobPresenter < BasePresenter
   end
 
   def link_to_job
-    ActionController::Base.helpers.sanitize(model.link_to_job)
+    h.sanitize(model.link_to_job)
   end
 
   def location_or_remote
