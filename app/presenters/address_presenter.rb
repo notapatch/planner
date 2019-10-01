@@ -3,8 +3,9 @@ class AddressPresenter < BasePresenter
     lat = model.latitude.present? ? "Latitude: #{model.latitude}" : nil
     lng = model.longitude.present? ? "Longitude: #{model.longitude}" : nil
 
-    [model.flat, model.street, "#{model.city}, #{model.postal_code}", lat, lng]
-      .compact.delete_if(&:empty?).join('<br/>').html_safe
+    html = [model.flat, model.street, "#{model.city}, #{model.postal_code}", lat, lng]
+            .compact.delete_if(&:empty?).join('<br/>')
+    h.sanitize(html)
   end
 
   def for_map
