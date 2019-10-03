@@ -4,6 +4,17 @@ RSpec.describe ChapterPresenter do
   let(:chapter) { Fabricate(:chapter_without_organisers) }
   let(:presenter) { ChapterPresenter.new(chapter) }
 
+  context '#email' do
+    it 'allows email addresses' do
+      expect(presenter.email).to eq(chapter.email)
+    end
+
+    it 'escapes html' do
+      presenter = ChapterPresenter.new(Fabricate(:chapter_without_organisers, email: '<BR>'))
+      expect(presenter.email).to eq('&lt;BR&gt;')
+    end
+  end
+
   it '#twitter_id' do
     expect(chapter).to receive(:twitter_id)
 

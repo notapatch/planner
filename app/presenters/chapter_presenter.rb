@@ -1,4 +1,8 @@
 class ChapterPresenter < BasePresenter
+  def email
+    html_escape(model.email)
+  end
+
   def twitter_id
     model.twitter_id || Planner::Application.config.twitter_id
   end
