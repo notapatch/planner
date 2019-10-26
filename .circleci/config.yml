@@ -54,3 +54,12 @@ jobs:
 
       # Run the tests
       - run: bundle exec rake
+
+workflows:
+  version: 2
+  setup_and_test:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
