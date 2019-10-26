@@ -9,7 +9,7 @@ jobs:
           PGHOST: localhost
           PGUSER: planner
           RAILS_ENV: test
-      - image: postgres:9.5
+      - image: circleci/postgres:11
         environment:
           POSTGRES_USER: planner
           POSTGRES_DB: planner
@@ -17,6 +17,20 @@ jobs:
     steps:
       - checkout
 
+  test:
+    docker:
+      - image: circleci/ruby:2.4.6-node-browsers
+        environment:
+          PGHOST: localhost
+          PGUSER: planner
+          RAILS_ENV: test
+      - image: circleci/postgres:11
+        environment:
+          POSTGRES_USER: planner
+          POSTGRES_DB: planner
+          POSTGRES_PASSWORD: ""
+    parallelism: 2
+    steps:
       # Restore Cached Dependencies
       - type: cache-restore
         name: Restore bundle cache
