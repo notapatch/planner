@@ -7,7 +7,6 @@ module ApplicationHelper
     human_date
   end
 
-<<<<<<< HEAD
   def set_title(title=nil)
     if title
       title = title + ' | ' + t(:brand)
@@ -17,15 +16,6 @@ module ApplicationHelper
   def get_title()
     return content_for?(:title) ? content_for(:title) : t(:brand)
   end
-=======
-  def title(*page_title)
-    if Array(page_title).size.zero?
-      return content_for?(:title) ? content_for(:title) : t(:brand)
-    else
-      return content_for :title, (Array(page_title) << t(:brand)).join(' | ')
-    end
-  end
->>>>>>> a5d7c263d9daa10f86fe5824d36d7c1fd0b2dc44
 
   def dot_markdown(text)
     GitHub::Markdown.render_gfm(text).html_safe
