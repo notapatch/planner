@@ -7,12 +7,14 @@ module ApplicationHelper
     human_date
   end
 
-  def title(*page_title)
-    if Array(page_title).size.zero?
-      return content_for?(:title) ? content_for(:title) : t(:brand)
-    else
-      return content_for :title, (Array(page_title) << t(:brand)).join(' | ')
+  def set_title(title=nil)
+    if title
+      title = title + ' | ' + t(:brand)
+      return content_for :title, title
     end
+  end
+  def get_title()
+    return content_for?(:title) ? content_for(:title) : t(:brand)
   end
 
   def dot_markdown(text)
