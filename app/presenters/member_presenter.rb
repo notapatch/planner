@@ -3,6 +3,7 @@ class MemberPresenter < BasePresenter
     has_role? :organiser, :any
   end
 
+
   def event_organiser?(event)
     has_role?(:organiser, event) || has_role?(:organiser, event.chapter) || has_role?(:admin)
   end
