@@ -3,6 +3,8 @@ language: ruby
 
 cache:
   bundler: true
+  directories:
+    - vendor/bundle
 
 rvm:
   - 2.4.2
