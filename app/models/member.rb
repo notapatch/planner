@@ -55,7 +55,7 @@ class Member < ActiveRecord::Base
   end
 
   def full_name
-    pronoun = self.pronouns.present? ? "(#{self.pronouns})" : nil
+    pronoun = pronouns.present? ? "(#{pronouns})" : nil
     [name, surname, pronoun].compact.join ' '
   end
 
@@ -80,12 +80,12 @@ class Member < ActiveRecord::Base
 
   def send_eligibility_email(user)
     MemberMailer.eligibility_check(self, user.email).deliver_now
-    self.eligibility_inquiries.create(sent_by_id: user.id)
+    eligibility_inquiries.create(sent_by_id: user.id)
   end
 
   def send_attendance_email(user)
     MemberMailer.attendance_warning(self, user.email).deliver_now
-    self.attendance_warnings.create(sent_by_id: user.id)
+    attendance_warnings.create(sent_by_id: user.id)
   end
 
   def avatar(size = 100)
