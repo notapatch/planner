@@ -42,8 +42,6 @@ class Member < ActiveRecord::Base
     tagged_with(skill_name)
   end
 
-
-
   def banned?
     bans.active.present? || bans.permanent.present?
   end
