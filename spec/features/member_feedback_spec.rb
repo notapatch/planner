@@ -81,7 +81,7 @@ feature 'member feedback' do
 
       click_button('Submit feedback')
 
-      expect(page.current_path).to eq(submit_feedback_path(valid_token))
+      expect(page).to have_current_path(submit_feedback_path(valid_token), ignore_query: true)
       expect(page).to have_content("Rating can't be blank")
     end
   end

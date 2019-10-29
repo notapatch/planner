@@ -22,8 +22,8 @@ feature 'Managing meetings' do
       click_on 'Update'
 
       expect(page).to have_content('Meeting successfully created')
-      expect(page.current_path)
-        .to eq(admin_meeting_path("#{I18n.l(today, format: :year_month).downcase}-august-meeting-1"))
+      expect(page)
+        .to have_current_path(admin_meeting_path("#{I18n.l(today, format: :year_month).downcase}-august-meeting-1"), ignore_query: true)
       expect(page).to have_content 'Invite'
     end
 
@@ -79,7 +79,7 @@ feature 'Managing meetings' do
     scenario 'when no format is used then it redirects to the meeting page' do
       visit attendees_emails_admin_meeting_path(meeting)
 
-      expect(page.current_path).to eq(admin_meeting_path(meeting))
+      expect(page).to have_current_path(admin_meeting_path(meeting), ignore_query: true)
     end
   end
 

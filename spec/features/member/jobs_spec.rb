@@ -25,7 +25,7 @@ feature 'Member managing jobs' do
       visit member_jobs_path
       click_on job.title
 
-      expect(page.current_path).to eq(member_job_path(job.id))
+      expect(page).to have_current_path(member_job_path(job.id), ignore_query: true)
     end
 
     it 'drafts job post take a user to the member job page' do
@@ -34,7 +34,7 @@ feature 'Member managing jobs' do
       visit member_jobs_path
       click_on job.title
 
-      expect(page.current_path).to eq(member_job_path(job.id))
+      expect(page).to have_current_path(member_job_path(job.id), ignore_query: true)
     end
 
     it 'pending job post take a user to the member job post' do
@@ -43,7 +43,7 @@ feature 'Member managing jobs' do
       visit member_jobs_path
       click_on job.title
 
-      expect(page.current_path).to eq(member_job_path(job.id))
+      expect(page).to have_current_path(member_job_path(job.id), ignore_query: true)
     end
   end
 

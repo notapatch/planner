@@ -117,6 +117,6 @@ feature 'Managing workshops' do
     workshop = Fabricate(:workshop)
     visit admin_workshop_attendees_checklist_path(workshop)
 
-    expect(page.current_path).to eq(admin_workshop_path(workshop))
+    expect(page).to have_current_path(admin_workshop_path(workshop), ignore_query: true)
   end
 end

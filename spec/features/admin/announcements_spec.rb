@@ -17,7 +17,7 @@ feature 'Announcements' do
         click_on 'create'
 
         expect(page).to have_content('Announcement successfully created')
-        expect(page.current_path).to eq(admin_announcements_path)
+        expect(page).to have_current_path(admin_announcements_path, ignore_query: true)
       end
     end
 
@@ -39,7 +39,7 @@ feature 'Announcements' do
 
         expect(page).to have_content('Announcement successfully updated')
         expect(page).to have_content('New event coming up soon! Stay tuned.')
-        expect(page.current_path).to eq(admin_announcements_path)
+        expect(page).to have_current_path(admin_announcements_path, ignore_query: true)
       end
     end
 

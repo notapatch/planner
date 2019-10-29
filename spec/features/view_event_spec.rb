@@ -38,7 +38,7 @@ feature 'viewing an event' do
 
       context 'can RSVP to an event' do
         scenario 'as a Coach' do
-          expect(current_path).to eq(event_path(closed_event))
+          expect(page).to have_current_path(event_path(closed_event), ignore_query: true)
 
           click_on 'Attend as a coach'
           click_on 'RSVP'
@@ -47,7 +47,7 @@ feature 'viewing an event' do
         end
 
         scenario 'as a Student' do
-          expect(current_path).to eq(event_path(closed_event))
+          expect(page).to have_current_path(event_path(closed_event), ignore_query: true)
 
           click_on 'Attend as a student'
           click_on 'RSVP'
@@ -72,7 +72,7 @@ feature 'viewing an event' do
 
       context 'can RSVP to an event' do
         scenario 'as a Coach' do
-          expect(current_path).to eq(event_path(open_event))
+          expect(page).to have_current_path(event_path(open_event), ignore_query: true)
 
           click_on 'Attend as a coach'
           click_on 'RSVP'
@@ -82,7 +82,7 @@ feature 'viewing an event' do
         end
 
         scenario 'as a Student' do
-          expect(current_path).to eq(event_path(open_event))
+          expect(page).to have_current_path(event_path(open_event), ignore_query: true)
 
           click_on 'Attend as a student'
           click_on 'RSVP'
@@ -96,7 +96,7 @@ feature 'viewing an event' do
         invitation = Fabricate(:attending_event_invitation, event: open_event, member: member)
         visit event_path(open_event)
 
-        expect(current_path).to eq(event_invitation_path(open_event, invitation.token))
+        expect(page).to have_current_path(event_invitation_path(open_event, invitation.token), ignore_query: true)
       end
     end
   end

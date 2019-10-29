@@ -7,7 +7,7 @@ shared_examples 'invitation route' do
 
       expect(page).to have_link 'I can no longer attend'
       expect(page).to have_content("Thanks for getting back to us #{invitation.member.name}.")
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
     end
 
     scenario 'they can RSVP directly through the invitation' do
@@ -15,7 +15,7 @@ shared_examples 'invitation route' do
       visit accept_invitation_route
 
       expect(page).to have_link 'I can no longer attend'
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
       expect(page).to have_content(I18n.t('messages.accepted_invitation', name: member.name))
     end
 
@@ -58,7 +58,7 @@ shared_examples 'invitation route' do
       visit reject_invitation_route
 
       expect(page).to have_content(I18n.t('messages.rejected_invitation', name: invitation.member.name))
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
     end
 
     scenario 'when already confirmed they are not attending' do
@@ -74,7 +74,7 @@ shared_examples 'invitation route' do
       visit reject_invitation_route
 
       expect(page).to have_content(I18n.t('messages.not_attending_already'))
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
     end
 
     scenario 'when already RSVPd to another event on same evening' do
@@ -106,7 +106,7 @@ shared_examples 'invitation route' do
       visit reject_invitation_route
 
       expect(page).to have_content('You can only change your RSVP status up to 3.5 hours before the workshop')
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
     end
 
     scenario 'when the event is less than 3.5 hours from now and tje reject by accessing the link directly' do
@@ -114,7 +114,7 @@ shared_examples 'invitation route' do
       visit reject_invitation_route
 
       expect(page).to have_content('You can only change your RSVP status up to 3.5 hours before the workshop')
-      expect(page.current_path).to eq(invitation_route)
+      expect(page).to have_current_path(invitation_route, ignore_query: true)
     end
   end
 
