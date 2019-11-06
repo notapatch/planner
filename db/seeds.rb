@@ -93,7 +93,7 @@ if Rails.env.development?
     end
     Rails.logger.info '..done!'
   rescue Exception => e
-    Rails.logger.error 'Something went wrong. Try running `bundle exec rake db:drop db:create db:migrate` first'
+    Rails.logger.error 'Something went wrong. Try running `bundle exec rake db:drop` first'
     Rails.logger.error e.message
   end
 end
