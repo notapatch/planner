@@ -34,7 +34,6 @@ en:
       time: "%H:%M"
       year_month: "%Y-%B"
       log: "at %H:%M on the %d/%m/%Y"
-      workshop: "%A, %e %B %Y at %R"
       dashboard: "%A, %b %d"
   number:
     currency:
