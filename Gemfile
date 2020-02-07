@@ -38,7 +38,7 @@ gem 'will_paginate'
 gem 'icalendar'
 gem 'tzinfo-data'
 
-gem 'chosen-rails'
+gem 'chosen-rails', '>= 1.9.0'
 gem 'redcarpet'
 
 gem 'gibbon', '~> 1.1.5'
