@@ -4,7 +4,7 @@ class AddressPresenter < BasePresenter
     lng = model.longitude.present? ? "Longitude: #{model.longitude}" : nil
 
     html = [model.flat, model.street, "#{model.city}, #{model.postal_code}", lat, lng]
-            .compact.delete_if(&:empty?).join('<br/>')
+           .compact.delete_if(&:empty?).join('<br/>')
     h.sanitize(html)
   end
 
