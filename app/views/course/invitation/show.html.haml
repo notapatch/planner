@@ -25,7 +25,7 @@
       %h5
         = @course.short_description
       %p
-        = @course.description.html_safe
+        = @course.description
 
       - if @invitation.course.url.present?
         %p

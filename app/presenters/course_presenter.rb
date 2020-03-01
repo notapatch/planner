@@ -1,4 +1,8 @@
 class CoursePresenter < EventPresenter
+  def description
+    h.sanitize model.description
+  end
+
   def venue
     model.sponsor
   end
