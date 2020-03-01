@@ -20,7 +20,7 @@
         %p.lead
           = t("workshops.lead")
         %p.description
-          = sanitize(@workshop.description)
+          = @workshop.description
 
         - unless current_user and current_user.banned?
           = render 'workshop_actions'

@@ -11,6 +11,10 @@ RSpec.describe WorkshopPresenter do
   let(:workshop_double) { double(:workshop, attendances: invitations, host: Fabricate(:sponsor), chapter: chapter) }
   let(:workshop) { WorkshopPresenter.new(workshop_double) }
 
+  it_behaves_like "Sanitized HTML", "description", "<br>", "alert" do
+    let(:model) { WorkshopPresenter.new(Fabricate(:workshop, description: '<script>alert</script><br>')) }
+  end
+
   it '#venue' do
     expect(workshop_double).to receive(:host)
 
