@@ -25,15 +25,23 @@ class EventPresenter < BasePresenter
   end
 
   def description
-    h.sanitize(model.description) rescue nil
+    h.sanitize(model.description)
+  rescue StandardError
+    nil
   end
 
   def short_description
-    model.short_description rescue model.description
+    model.short_description
+  rescue StandardError
+    model.description
   end
 
   def organisers
-    @organisers ||= model.permissions.find_by(name: 'organiser').members rescue []
+    @organisers ||= begin
+                      model.permissions.find_by(name: 'organiser').members
+                    rescue StandardError
+                      []
+                    end
   end
 
   def month
@@ -91,6 +99,8 @@ class EventPresenter < BasePresenter
   end
 
   def chapter_organisers
-    model.chapter.permissions.find_by(name: 'organiser').members rescue []
+    model.chapter.permissions.find_by(name: 'organiser').members
+  rescue StandardError
+    []
   end
 end
