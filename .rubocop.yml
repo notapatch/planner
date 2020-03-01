@@ -7,6 +7,9 @@ AllCops:
     - config/**/*
     - bin/**/*
 
+require:
+  - rubocop-rails
+
 Layout/LineLength:
   Max: 120
 
@@ -22,9 +25,5 @@ Style/FrozenStringLiteralComment:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Rails:
-  Enabled: true
-
 Rails/Date:
   Enabled: true
-
