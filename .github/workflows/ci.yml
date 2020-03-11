@@ -25,8 +25,9 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           sudo apt-get -yqq install libpq-dev
-          gem install bundler
-          bundle install --jobs 4 --retry 3
+          gem install bundler --version=1.17.3
+          gem uninstall bundler --version=2.1.4
+          bundle _1.17.3_ install --jobs 4 --retry 3
           bundle exec rake db:setup
           bundle exec rake
 
