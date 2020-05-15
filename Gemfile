@@ -66,7 +66,7 @@ group :development, :test do
   gem 'rspec-its'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.80.1', require: false
-  gem 'rubocop-rails', require: false
+  gem 'rubocop-rails', '>= 2.4.2', require: false
   gem 'timecop'
   gem 'bullet'
 end
