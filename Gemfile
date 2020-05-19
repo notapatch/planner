@@ -65,7 +65,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.80.1', require: false
-  gem 'rubocop-rails', require: false
+  gem 'rubocop-rails', '>= 2.5.2', require: false
   gem 'timecop'
   gem 'bullet'
 end
