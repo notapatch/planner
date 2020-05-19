@@ -1,5 +1,8 @@
 dist: xenial
 language: ruby
+before_install:
+  - gem install bundler --version '= 1.17.1' --no-document
+  - bundle _1.17.1_ install
 cache: bundler
 bundler_args: --without development
 rvm:
