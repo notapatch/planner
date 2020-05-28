@@ -4,3 +4,9 @@
 require File.expand_path('config/application', __dir__)
 
 Planner::Application.load_tasks
+
+if %w[development test].include? Rails.env
+  task(:default).clear
+  task fast: ['spec:controllers', 'spec:helpers', 'spec:mailers', 'spec:models', 'spec:presenters']
+  task slow: ['spec:features']
+end
