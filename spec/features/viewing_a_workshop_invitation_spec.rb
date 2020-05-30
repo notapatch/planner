@@ -51,7 +51,7 @@ RSpec.feature 'Viewing a workshop invitation', type: :feature, wip: true do
       end
     end
 
-    include_examples "viewing workshop details"
+    include_examples "visitor viewing workshop details"
   end
 
   context 'virtual workshop' do
@@ -95,7 +95,7 @@ RSpec.feature 'Viewing a workshop invitation', type: :feature, wip: true do
       end
     end
 
-    include_examples "viewing workshop details"
+    include_examples "visitor viewing workshop details"
 
   end
 end

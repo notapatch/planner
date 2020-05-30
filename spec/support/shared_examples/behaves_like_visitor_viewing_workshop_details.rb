@@ -1,4 +1,4 @@
-RSpec.shared_examples 'viewing workshop details' do
+RSpec.shared_examples 'visitor viewing workshop details' do
   scenario 'sponsors' do
     within '#sponsors' do
       workshop.sponsors.each do |sponsor|

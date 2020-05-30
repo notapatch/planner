@@ -25,11 +25,11 @@ RSpec.feature 'Viewing a workshop page', type: :feature do
           end
         end
 
-        include_examples "viewing workshop details"
+        include_examples "visitor viewing workshop details"
       end
 
       describe '#actions' do
-        include_examples "viewing workshop actions"
+        include_examples "visitor viewing workshop actions"
       end
     end
 
@@ -54,11 +54,11 @@ RSpec.feature 'Viewing a workshop page', type: :feature do
           end
         end
 
-        include_examples "viewing workshop details"
+        include_examples "visitor viewing workshop details"
       end
 
       describe '#actions' do
-        include_examples "viewing workshop actions"
+        include_examples "visitor viewing workshop actions"
       end
     end
   end
