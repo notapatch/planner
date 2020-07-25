@@ -26,6 +26,8 @@ RSpec.describe FeedbackRequest, type: :model  do
     end
   end
 
+
+
   context 'after create hook' do
     it '#email' do
       feedback_request = Fabricate.build(:feedback_request)
