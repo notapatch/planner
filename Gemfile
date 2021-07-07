@@ -23,7 +23,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg', '~>0.20.0'
 gem 'pickadate-rails'
-gem 'premailer-rails'
+gem 'premailer-rails', '>= 1.11.1'
 gem 'puma'
 gem 'pundit'
 gem 'rails4-autocomplete'
@@ -50,7 +50,7 @@ gem 'jbuilder'
 
 group :development do
   gem 'better_errors'
-  gem 'letter_opener'
+  gem 'letter_opener', '>= 1.7.0'
 end
 
 group :development, :test do
@@ -58,7 +58,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'fabrication'
   gem 'faker'
-  gem 'launchy'
+  gem 'launchy', '>= 2.5.0'
   gem 'pry-byebug'
   gem 'pry-remote'
   gem 'rspec-collection_matchers'
@@ -69,7 +69,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '>= 3.32.1'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'webdrivers'
