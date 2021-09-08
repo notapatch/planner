@@ -49,7 +49,7 @@ gem 'rails-html-sanitizer', '~> 1.3.0'
 gem 'jbuilder'
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'letter_opener'
 end
 
